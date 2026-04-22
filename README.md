@@ -13,6 +13,9 @@
 
 1. 在编辑器里**选中一段代码**（没有选中时菜单项不会出现）
 2. **右键** → 菜单里找到 **"Copy with Absolute Path and Lines"**（在 `Copy Reference` 下面）
+
+   ![右键菜单示意](docs/usage.png)
+
 3. 点一下，剪贴板里就是：
 
 ```
