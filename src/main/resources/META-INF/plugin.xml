@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.zzy.copywithpath</id>
+    <name>Copy with Absolute Path</name>
+    <vendor email="znzryb34@gmail.com">znzryb</vendor>
+
+    <description><![CDATA[
+    Adds an editor action that copies the current selection with a header line
+    containing the absolute file path and the line range, e.g.
+    <pre>
+    // /Users/you/project/src/main.cpp:42-50
+    int solve(int n) {
+        ...
+    }
+    </pre>
+    Useful for pasting code into AI chats (Claude, ChatGPT) together with its
+    exact location so the assistant knows which file and lines you mean.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="com.zzy.copywithpath.CopyWithAbsolutePath"
+                class="com.zzy.copywithpath.CopyWithAbsolutePathAction"
+                text="Copy with Absolute Path and Lines"
+                description="Copy selection with absolute file path and line range header">
+            <add-to-group group-id="EditorPopupMenu"
+                          anchor="after"
+                          relative-to-action="CopyReference"/>
+        </action>
+    </actions>
+</idea-plugin>
