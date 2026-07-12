@@ -26,6 +26,8 @@
             <add-to-group group-id="EditorPopupMenu"
                           anchor="after"
                           relative-to-action="CopyReference"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt meta C"/>
+            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="ctrl alt meta C"/>
         </action>
     </actions>
 </idea-plugin>
