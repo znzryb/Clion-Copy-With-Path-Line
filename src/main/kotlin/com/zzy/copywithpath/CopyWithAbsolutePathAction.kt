@@ -14,15 +14,14 @@ class CopyWithAbsolutePathAction : AnAction() {
         val virtualFile = psiFile.virtualFile ?: return
 
         val selection = editor.selectionModel
-        val selectedText = selection.selectedText ?: return
+        if (!selection.hasSelection()) return
 
         val doc = editor.document
         val startLine = doc.getLineNumber(selection.selectionStart) + 1
         val endLine = doc.getLineNumber(selection.selectionEnd) + 1
-        val range = if (startLine == endLine) "$startLine" else "$startLine-$endLine"
+        val lineRef = if (startLine == endLine) "L$startLine" else "L$startLine-$endLine"
 
-        val header = "// ${virtualFile.path}:$range"
-        val payload = "$header\n$selectedText"
+        val payload = "@${virtualFile.path}#$lineRef"
 
         CopyPasteManager.getInstance().setContents(StringSelection(payload))
     }

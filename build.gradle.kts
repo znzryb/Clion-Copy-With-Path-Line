@@ -30,9 +30,13 @@ intellijPlatform {
     pluginConfiguration {
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
-            providers.gradleProperty("pluginUntilBuild").orNull
+            val explicitUntil = providers.gradleProperty("pluginUntilBuild").orNull
                 ?.takeIf { it.isNotBlank() }
-                ?.let { untilBuild = it }
+            if (explicitUntil != null) {
+                untilBuild = explicitUntil
+            } else {
+                untilBuild = provider { null }
+            }
         }
     }
 }
